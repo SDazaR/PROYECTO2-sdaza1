@@ -29,7 +29,7 @@ def make_sale_handler(product:str, id:int):
         resp = "No existe una heladería con ese id"
         return render_template("index.html", resp=resp, menu=parlor.products, parlor_name=parlor.name, iden=id)
     try:
-        parlor.make_sale(product)  
+        response = parlor.make_sale(product)  
     except ValueError as e:
         resp = str(e)
         return render_template("index.html", resp=resp, menu=parlor.products, parlor_name=parlor.name, iden=id)
@@ -43,7 +43,7 @@ def make_sale_handler(product:str, id:int):
         resp =  "No se pudo actualizar los valores de la heladería. Causa:" + str(e)
         return render_template("index.html", resp=resp, menu=parlor.products, parlor_name=parlor.name, iden=id)
 
-    resp = "La venta fue ejecutada con éxito."
+    resp = response
 
     return render_template("index.html", resp=resp, menu=parlor.products, parlor_name=parlor.name, iden=id)
 

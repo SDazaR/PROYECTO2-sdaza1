@@ -73,9 +73,9 @@ class Parlor(db.Model):
 
         for ingredient in product.ingredients:
             if ingredient.type.name == IngredientType.BASE.name and ingredient.count < 0.2:
-                raise ValueError("No hay suficiente ingrediente: " + ingredient.name + ".")
+                raise ValueError("¡Oh no! Nos hemos quedado sin " + ingredient.name + ".")
             if ingredient.type.name == IngredientType.COMPLEMENT.name and ingredient.count < 1:
-                raise ValueError("No hay suficiente ingrediente: " + ingredient.name + ".")
+                raise ValueError("¡Oh no! Nos hemos quedado sin " + ingredient.name + ".")
         new_ingredients = self.ingredients.copy()
         for ingredient in product.ingredients:
             new_ingredient = ingredient.copy()
@@ -90,3 +90,5 @@ class Parlor(db.Model):
                     break
         self.daily_sales += 1
         self.ingredients = new_ingredients.copy()
+
+        return "Vendido"
