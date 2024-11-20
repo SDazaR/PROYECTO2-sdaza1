@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú de la Heladería</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+        header {
+            background-color: #ff6f61;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+        }
+        .container {
+            margin: 2rem auto;
+            max-width: 800px;
+            padding: 1rem;
+        }
+        .producto {
+            background-color: white;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .producto h3 {
+            margin: 0;
+            color: #ff6f61;
+        }
+        .producto p {
+            margin: 0.5rem 0;
+            color: #333;
+        }
+        .producto .precio {
+            font-weight: bold;
+            color: #ff6f61;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>{{parlor_name}}</h1>
+    </header>
+
+    <p class="container">El mejor producto es: {{resp}}</p>
+
+</body>
+</html>
