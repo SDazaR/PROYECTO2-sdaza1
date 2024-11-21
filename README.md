@@ -1,10 +1,17 @@
-# PROYECTO2 - Heladería Backend (Curso Backend con Python - Universidad de los Andes 2024-2)
+# PROYECTO2 - Heladería
 
 Este repositorio corresponde al segundo proyecto del curso de Backend con Python, impartido por la Universidad de los Andes en el semestre 2024-2.
 
 ### Descripción general
 Este proyecto implementa una aplicación web de gestión para una heladería utilizando Flask. El sistema permite manejar la creación de heladerías, sus productos y la venta de estos productos.
 
+### Ejecución de la aplicación
+
+Para ejecutar la aplicación se debe ejecutar:
+
+```console
+flask run
+```
 ### Funcionalidades principales
 
 1. **Creación de Heladería en la Base de Datos:**
@@ -20,6 +27,12 @@ Este proyecto implementa una aplicación web de gestión para una heladería uti
    Al hacer clic en cualquier producto del menú, se realiza la compra de ese producto. La acción se ejecuta a través de la URL [http://127.0.0.1:5000/parlor/1/makeSale/Copa%20Vainilla](http://127.0.0.1:5000/parlor/1/makeSale/Copa%20Vainilla), y se muestra un mensaje de confirmación en la parte superior de la página.
 
 5. **Mejor Producto:**
-   En la URL [http://127.0.0.1:5000/parlor/1/bestProduct](http://127.0.0.1:5000/parlor/1/bestProduct), se muestra el nombre del mejor producto de la heladería con el ID especificado (por ejemplo, `1`).
+   También hay un botón de mejor producto en la parte derecha, el cuál redirige a la URL [http://127.0.0.1:5000/parlor/1/bestProduct](http://127.0.0.1:5000/parlor/1/bestProduct). Aparecerá un mensaje en la parte superior con el nombre del mejor producto de la heladería con el ID especificado (por ejemplo, `1`).
 
+### Test
 
+Para hacer pruebas de los métodos de la heladería se puede ejecutar:
+
+```console
+python -m unittest .\tests\test_parlor.py
+```

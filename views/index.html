@@ -14,8 +14,37 @@
         header {
             background-color: #ff6f61;
             color: white;
-            text-align: center;
-            padding: 1rem 0;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+        .header-title {
+            margin: 0;
+        }
+        .mejor-producto-btn {
+            background-color: white;
+            color: #ff6f61;
+            border: 2px solid #ff6f61;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .mejor-producto-btn:hover {
+            background-color: #ff6f61;
+            color: white;
+        }
+        .resp {
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #333;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            max-width: 300px;
+            text-align: right;
         }
         .container {
             margin: 2rem auto;
@@ -46,10 +75,11 @@
 </head>
 <body>
     <header>
-        <h1>{{parlor_name}}</h1>
+        <h1 class="header-title">{{parlor_name}}</h1>
+        <div class="resp">{{ resp }}</div>
+        <a href="/parlor/{{ iden }}/bestProduct" class="mejor-producto-btn">Mejor Producto</a>
     </header>
     <div class="container">
-        <p>{{ resp }}</p>
         {% for item in menu %}
         <div class="producto">
             <a href="/parlor/{{ iden }}/makeSale/{{item.name}}" class="button">{{ item.name }}</a>

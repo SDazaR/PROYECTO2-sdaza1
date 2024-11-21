@@ -16,8 +16,8 @@ def best_product_handler(id:int):
         parlor = Parlor.query.get(id)
     except:
         return "No existe una heladería con ese id"
-    response = parlor.best_product()
-    return render_template("bestProd.html", resp=response)
+    resp = parlor.best_product()
+    return render_template("index.html", resp=resp, menu=parlor.products, parlor_name=parlor.name, iden=id)
 
 @parlor_blueprint.route("/<int:id>/makeSale/<product>")
 def make_sale_handler(product:str, id:int):

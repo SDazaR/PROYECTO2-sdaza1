@@ -1,8 +1,8 @@
-from pytest import Pytester
 from unittest import TestCase
 from models.ingredient import Ingredient
 from models.product import Product
 from models.parlor import Parlor
+from models.enums.ingredient_type import IngredientType
 from app import app
 from models.enums.product_type import ProductType
 from utils.functions import count_calories, costs, best_product
@@ -21,14 +21,13 @@ cup1 = Product(name="Copa Vainilla", sale_price=8000.0, ingredients=[base1, comp
 milk_shake1 = Product(name="Malteada de Chocolate", sale_price=10000.0, ingredients=[base2, comp2, comp3], type=ProductType.MILKSHAKE)
 cup2 = Product(name="Copa Fresa", sale_price=9000.0, ingredients=[base3, comp1, comp2], type=ProductType.CUP)
 milk_shake2 = Product(name="Malteada de Fresa", sale_price=11000.0, ingredients=[base3, comp2, comp3], type=ProductType.MILKSHAKE)
-
 parlor = Parlor(name="Helato", products=[cup1, milk_shake1, cup2, milk_shake2])
+
 
 class TestParlor(TestCase):
     
     def setUp(self) -> None:
         self.client = app.test_client()
-
 
     def tearDown(self) -> None:
         pass
@@ -39,11 +38,20 @@ class TestParlor(TestCase):
     
     def test_replenish_ingredient(self):
         for ingredient in parlor.ingredients:
-            assert (ingredient.replenish())
+            previoust_count = ingredient.count
+            ingredient.replenish()
 
-    def test_reste_count(self):
+            if ingredient.type.value == IngredientType.BASE.value:
+                self.assertEqual(ingredient.count, previoust_count+5)
+            elif ingredient.type.value == IngredientType.COMPLEMENT.value:
+                self.assertEqual(ingredient.count, previoust_count+10)
+            
+
+    def test_reset_count(self):
         for ingredient in parlor.ingredients:
-            assert (ingredient.reset_count())
+            ingredient.reset_count()
+            self.assertEqual(ingredient.count, 0)
+
 
     def test_count_calories(self):
         for product in parlor.products:
